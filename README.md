@@ -1,126 +1,53 @@
-# Physics Lib ⚙️
+# Physics Lib
 
-Biblioteca em C++ com funções básicas de Física voltada para estudantes, iniciantes em programação e projetos educacionais.
+Biblioteca educacional em **C++17** que reúne funções para cálculos de Física introdutória. O projeto organiza as implementações por área de estudo e disponibiliza constantes reutilizáveis para apoiar exercícios e aplicações acadêmicas.
 
-O projeto implementa conceitos fundamentais da Física de forma simples e modular, com foco em aprendizado, clareza, documentação e boas práticas de desenvolvimento em C++.
+## Módulos implementados
 
----
+### Cinemática
 
-## 🚀 Características
+Funções para cálculos relacionados ao movimento:
 
-* ✅ C++17
-* ✅ Código modular
-* ✅ Namespaces organizados por área da Física
-* ✅ Documentação Doxygen
-* ✅ Fórmulas clássicas amplamente utilizadas
-* ✅ Foco educacional
+- Velocidade média: `calculateAverageVelocity()`
+- Posição no movimento uniforme: `calculateUniformMotionPosition()`
+- Aceleração média: `calculateAverageAcceleration()`
+- Velocidade final em função do tempo: `calculateFinalVelocityFromTime()`
+- Posição no movimento uniformemente variado: `calculateUniformlyVariedMotionPosition()`
+- Velocidade final pela equação de Torricelli: `calculateFinalVelocityFromDisplacement()`
 
----
+### Dinâmica
 
-## 📚 Conteúdo
+Funções para cálculos de força e movimento:
 
-A biblioteca atualmente possui três módulos principais.
+- Força resultante: `calculateForce()`
+- Aceleração: `calculateAcceleration()`
+- Peso: `calculateWeight()`
+- Força de atrito: `calculateFrictionForce()`
 
-### 🏎️ Cinemática (Kinematics)
+### Energia
 
-Estudo do movimento dos corpos sem considerar suas causas.
+Funções relacionadas a energia e trabalho:
 
-#### Fórmulas implementadas
+- Energia cinética: `calculateKineticEnergy()`
+- Energia potencial gravitacional: `calculateGravitationalPotentialEnergy()`
+- Energia mecânica total: `calculateTotalMechanicalEnergy()`
+- Trabalho mecânico: `calculateWork()`
+- Potência: `calculatePower()`
+- Energia potencial elástica: `calculateElasticPotentialEnergy()`
+- Variação da energia cinética: `calculateWorkFromKineticEnergyVariation()`
 
-* 🚗 Velocidade média: `Vm = Δs / Δt`
-* 💨 Aceleração média: `a = Δv / Δt`
-* 🛣️ Movimento uniforme (MU): `s = s₀ + v · t`
-* 🚀 Movimento uniformemente variado (MUV): `s = s₀ + v₀ · t + (a · t²) / 2`
-* 🎯 Equação de Torricelli: `v² = v₀² + 2 · a · Δs`
+## Constantes disponíveis
 
-#### Funções disponíveis
+O namespace `physics::constants` reúne constantes utilizadas pelos módulos:
 
-```cpp
-calculateAverageVelocity()
-calculateUniformMotionPosition()
+| Nome | Descrição |
+|---|---|
+| `kPi` | Constante matemática π. |
+| `kEarthGravity` | Valor de referência da gravidade terrestre: 9,8 m/s². |
 
-calculateAverageAcceleration()
-calculateFinalVelocityFromTime()
-calculateUniformlyVariedMotionPosition()
-calculateFinalVelocityFromDisplacement()
-```
+Exemplo:
 
----
-
-### 🏋️ Dinâmica (Dynamics)
-
-Estudo das forças responsáveis pelo movimento.
-
-#### Fórmulas implementadas
-
-* 💪 Força resultante: `F = m · a`
-* ⚡ Aceleração: `a = F / m`
-* 🌍 Peso: `P = m · g`
-* ⛸️ Força de atrito: `Fa = μ · N`
-
-#### Funções disponíveis
-
-```cpp
-calculateForce()
-calculateAcceleration()
-calculateWeight()
-calculateFrictionForce()
-```
-
----
-
-### ⚡ Energia (Energy)
-
-Estudo da capacidade de realizar trabalho e produzir transformações.
-
-#### Fórmulas implementadas
-
-* 🏎️ Energia cinética: `Ec = (m · v²) / 2`
-* ⛰️ Energia potencial gravitacional: `Ep = m · g · h`
-* ⚖️ Energia mecânica total: `Em = Ec + Ep`
-* 🔨 Trabalho mecânico: `W = F · Δs · cos(θ)`
-* 🔋 Potência mecânica: `P = W / Δt`
-* 🌀 Energia potencial elástica: `Ep = (k · x²) / 2`
-* 📈 Teorema Trabalho–Energia: `W = Ecf - Eci`
-
-#### Funções disponíveis
-
-```cpp
-calculateKineticEnergy()
-calculateGravitationalPotentialEnergy()
-calculateTotalMechanicalEnergy()
-
-calculateWork()
-calculatePower()
-calculateElasticPotentialEnergy()
-calculateWorkFromKineticEnergyVariation()
-```
-
----
-
-## 📏 Constantes
-
-A biblioteca disponibiliza constantes físicas e matemáticas reutilizáveis através do namespace:
-
-```cpp
-physics::constants
-```
-
-### 🔢 Constantes Matemáticas
-
-| Constante | Descrição                                                                      |
-| --------- | ------------------------------------------------------------------------------ |
-| `kPi`     | Valor de π (Pi), utilizado em conversões de ângulo e cálculos trigonométricos. |
-
-### 🌍 Constantes Físicas
-
-| Constante       | Descrição                                      |
-| --------------- | ---------------------------------------------- |
-| `kEarthGravity` | Aceleração da gravidade na Terra (`9.8 m/s²`). |
-
-### Exemplo
-
-```cpp
+~~~cpp
 #include "constants.h"
 
 double angleRadians =
@@ -128,13 +55,11 @@ double angleRadians =
 
 double weight =
     mass * physics::constants::kEarthGravity;
-```
+~~~
 
----
+## Exemplo de uso
 
-## 🧠 Exemplo de uso
-
-```cpp
+~~~cpp
 #include <iostream>
 #include "dynamics.h"
 
@@ -149,85 +74,58 @@ int main()
             acceleration
         );
 
-    std::cout
-        << "Força: "
-        << force
-        << " N\n";
-
+    std::cout << "Força: " << force << " N\n";
     return 0;
 }
-```
+~~~
 
-### Saída
+Saída esperada para os valores do exemplo:
 
-```text
+~~~text
 Força: 50 N
-```
+~~~
 
----
+## Tecnologias e ferramentas
 
-## 🛠️ Compilação
+- C++17
+- CMake 3.16 ou superior
+- Documentação de código com Doxygen
 
-### Requisitos
+## Compilação
 
-* Compilador com suporte a C++17
-* CMake 3.16 ou superior
+É necessário ter um compilador com suporte a C++17 e o CMake instalado.
 
-### Estrutura do projeto
+~~~bash
+cmake -S . -B build
+cmake --build build
+~~~
 
-```text
+O projeto configura um executável de demonstração. Em sistemas nos quais o executável gerado se chama `app`, ele pode ser iniciado com:
+
+~~~bash
+./build/app
+~~~
+
+## Organização
+
+~~~text
 physics-lib/
 ├── include/
 │   ├── constants.h
 │   ├── dynamics.h
 │   ├── energy.h
 │   └── kinematics.h
-│
 ├── src/
 │   ├── dynamics.cpp
 │   ├── energy.cpp
 │   ├── kinematics.cpp
 │   └── main.cpp
-│
 ├── CMakeLists.txt
 └── README.md
-```
+~~~
 
-### Build
+## Escopo atual
 
-```bash
-mkdir build
-cd build
+A implementação está concentrada em Cinemática, Dinâmica e Energia. Tópicos como quantidade de movimento, Termodinâmica, Eletromagnetismo e Gravitação Universal são possibilidades de expansão, não módulos documentados como concluídos.
 
-cmake ..
-cmake --build .
-```
-
-### Executando
-
-```bash
-./app
-```
-
----
-
-## 🎯 Objetivos do projeto
-
-* 📚 Facilitar o aprendizado de Física através do código.
-* 🧮 Implementar fórmulas clássicas de forma simples.
-* ⚙️ Servir como base para estudos de C++ moderno.
-* 🧹 Manter uma API consistente e bem documentada.
-* 📖 Demonstrar a aplicação prática de conceitos físicos em software.
-
----
-
-## 🔮 Próximos módulos
-
-Os módulos abaixo poderão ser adicionados futuramente:
-
-* 🚄 Momentum (Quantidade de Movimento)
-* 🌡️ Termodinâmica
-* ⚡ Eletromagnetismo
-* 🌌 Gravitação Universal
-
-A prioridade do projeto é implementar primeiro as fórmulas mais utilizadas em cursos introdutórios de Física.
+O objetivo é oferecer implementações simples e organizadas para estudo de Física e prática de C++ moderno.
